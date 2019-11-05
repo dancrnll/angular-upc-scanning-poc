@@ -1,0 +1,10 @@
+
+#interactive.viewport canvas, video, img {
+  float: left;
+  width: 100%;
+  height: 100%;
+}
+
+#interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
+  margin-left: -100%;
+}

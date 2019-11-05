@@ -1,0 +1,33 @@
+#upc-table {
+    margin-top: 1rem;
+    width: 100%;
+    display: table;
+}
+
+#upc-table-body{
+    display: table-row-group;
+}
+
+.upc-table-row{
+    display: table-row;
+}
+
+.upc-body-cell{
+    display: table-cell;
+}
+.upc-body-cell label {
+    min-width: 3rem;
+}
+
+.inputUpc {
+    margin: 3px;
+}
+
+.buttonUpc {
+    margin: .25rem 0 .25rem .25rem;
+}
+
+.list-style-none {
+    padding: 0rem;
+    list-style: none;
+}

@@ -1,0 +1,34 @@
+<div class="col-sm-12 pt-5 text-right">
+    <div class="col-md-12">
+        <app-barcode-modal-component></app-barcode-modal-component>
+        <!--<button type="button" class="btn btn-primary" (click)="onClickAddBarcode()">Add Barcode</button>-->
+    </div>
+</div>
+
+<div class="col-sm-12 pt-2">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th scope="col" class="text-center">#</th>
+                    <th scope="col">UPC#</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col" class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let barcode of barcodes">
+                    <td class="text-center">{{barcode.id}}</td>
+                    <td>{{barcode.barcode}}</td>
+                    <td>{{barcode.qty}}</td>
+                    <td width="150" class="text-center">
+                        <button type="button" class="btn btn-info btn-sm mr-2"
+                            (click)="onClickEditBarcodeDetail(barcode.id)">Edit</button>
+                        <button type="button" class="btn btn-danger btn-sm"
+                            (click)="onClickBarcodeDelete(barcode.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

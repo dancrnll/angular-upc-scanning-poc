@@ -1,0 +1,75 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{modalHeaderTitle}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+
+  <div class="input-group">
+    <div id="inputBarcode" style="position: static">
+      <div #picView id="interactive" class="viewport"></div>
+    </div>
+  </div>
+
+  <div *ngIf="!scannerActive">
+    <div id="upc-table">
+      <div id="upc-table-body">
+        <div class="upc-table-row">
+          <div class="upc-body-cell">
+            <label for="upc">UPC:</label>
+            <input type="text" name="upc" (keypress)="numberOnly($event)" [(ngModel)]="barcode" [maxlength]="maxLength"
+              class="inputUpc" />
+          </div>
+        </div>
+        <div class="upc-table-row" *ngIf="barcodeErrArr.length > 0">
+          <div class="upc-body-cell">
+            <ngb-alert type="danger" [dismissible]="false">
+              <ul class="list-style-none">
+                <li *ngFor="let err of barcodeErrArr">
+                  {{ err }}
+                </li>
+              </ul>
+            </ngb-alert>
+          </div>
+        </div>
+        <div class="upc-table-row">
+          <div class="upc-body-cell">
+            <label for="qty">Qty:</label>
+            <input type="number" #qtyInput name="qty" [(ngModel)]="qty" class="inputUpc" />
+          </div>
+        </div>
+        <div class="upc-table-row" *ngIf="qtyErrArr.length > 0">
+          <div class="upc-body-cell">
+            <ngb-alert type="danger" [dismissible]="false">
+              <ul class="list-style-none">
+                <li *ngFor="let err of qtyErrArr">
+                  {{ err }}
+                </li>
+              </ul>
+            </ngb-alert>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal-footer">
+  <span *ngIf="!scannerActive">
+    <button type="button" *ngIf="originalBarcodeId == 0" class="btn btn-dark buttonUpc" [disabled]="addInProgress" (click)="addEntryToList(false)">
+      Add Entry
+    </button>
+    <button type="button" class="btn btn-dark buttonUpc" [disabled]="addInProgress" (click)="addEntryToList(true)">
+      {{modalAddCloseBtnText}}
+    </button>
+    <button type="button" class="btn btn-dark buttonUpc" [disabled]="addInProgress" (click)="restartScanner()">
+      Re-scan
+    </button>
+  </span>
+  <button type="button" class="btn btn-dark" (click)="activeModal.close('Close click')">
+    Close
+  </button>
+</div>
